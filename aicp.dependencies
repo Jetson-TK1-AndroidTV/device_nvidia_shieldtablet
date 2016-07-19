@@ -13,7 +13,7 @@
    "repository": "CyanogenMod/android_hardware_nvidia_power",
    "target_path": "hardware/nvidia/power",
    "branch"     : "cm-13.0"
- }
+ },
  {
    "repository": "AICP/proprietary_vendor_nvidia",
    "target_path": "vendor/nvidia",
