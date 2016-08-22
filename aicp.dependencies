@@ -15,8 +15,8 @@
    "branch"     : "cm-13.0"
  },
  {
-   "repository": "AICP/proprietary_vendor_nvidia",
+   "repository": "TheMuppets/proprietary_vendor_nvidia",
    "target_path": "vendor/nvidia",
-   "branch"     : "mm6.0"
+   "branch"     : "cm-13.0"
  }
 ]
