@@ -21,3 +21,11 @@ ro.bt.bdaddr_path=/mnt/factory/bluetooth/bt_mac.txt
 
 # Legacy omx decoder support
 media.stagefright.less-secure=true
+
+# Hardware Info
+ro.device.chipset=NVIDIA Tegra K1 T124
+ro.device.cpu=Quad Core 2.2GHz
+ro.device.gpu=NVIDIA GK20A (Kepler)
+ro.device.rear_cam=5 MP
+ro.device.front_cam=5 MP
+ro.device.screen_res=1200 x 1920
