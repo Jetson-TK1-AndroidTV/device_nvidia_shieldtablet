@@ -6,8 +6,8 @@
 #documentation without an express license agreement from NVIDIA Corporation
 #is strictly prohibited.
 
-import init.tegra.rc
-import init.tn8_common.rc
+import init.tegra_base.rc
+import init.tegra_common.rc
 import init.t124.rc
 import init.cal.rc
 import init.ray_touch.rc

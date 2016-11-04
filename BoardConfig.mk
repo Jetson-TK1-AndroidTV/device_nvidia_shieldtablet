@@ -29,11 +29,11 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 # Kernel
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.9/bin
 KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
-TARGET_KERNEL_SOURCE := kernel/nvidia/shield
-TARGET_KERNEL_CONFIG := cyanogenmod_shieldtablet_defconfig
-BOARD_KERNEL_CMDLINE := androidboot.hardware=tn8
+TARGET_KERNEL_SOURCE := kernel/shield
+TARGET_KERNEL_CONFIG := tegra12_jetson_android_defconfig
+BOARD_KERNEL_CMDLINE := androidboot.hardware=tegra
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -51,11 +51,7 @@ BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
 
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/nvidia/shieldtablet/comms
-# At least when debugging is enabled, we have the same crash as manta
-BCM_BLUETOOTH_MANTA_BUG := true
+BOARD_HAVE_BLUETOOTH := false
 
 # Graphics
 USE_OPENGL_RENDERER := true
@@ -70,21 +66,16 @@ MAX_EGL_CACHE_SIZE := 4194304
 MAX_EGL_CACHE_ENTRY_SIZE := 262144
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/nvidia/shieldtablet/initfiles/fstab.tn8
+TARGET_RECOVERY_FSTAB := device/nvidia/shieldtablet/initfiles/fstab.tegra
 
 # Wifi related defines
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_WLAN_DEVICE                := bcmdhd
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
-WIFI_DRIVER_FW_PATH_STA          := "/data/misc/wifi/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP           := "/data/misc/wifi/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P          := "/data/misc/wifi/firmware/fw_bcmdhd_p2p.bin"
-WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_MODULE_ARG           := "iface_name=wlan0"
-WIFI_DRIVER_MODULE_NAME          := "bcmdhd"
+BOARD_WLAN_DEVICE := pcie
+CONFIG_CTRL_IFACE := y
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_pcie
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_pcie
 
 BOARD_HARDWARE_CLASS := device/nvidia/shieldtablet/cmhw/
 

@@ -14,18 +14,15 @@
 # limitations under the License.
 #
 
-PRODUCT_AAPT_CONFIG += xlarge large
+PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1200
 
 PRODUCT_CHARACTERISTICS := tablet
 TARGET_TEGRA_VERSION := t124
 TARGET_TEGRA_MODEM := icera
 TARGET_TEGRA_TOUCH := raydium
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+$(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/nvidia/shieldtablet/shieldtablet-vendor.mk)
 
@@ -37,30 +34,25 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    fstab.tn8 \
-    init.recovery.tn8.rc \
-    init.tn8.rc \
-    init.tn8_common.rc \
-    power.tn8.rc \
-    ueventd.tn8.rc
+    fstab.tegra \
+    init.recovery.tegra.rc \
+    init.tegra.rc \
+    init.tegra_common.rc \
+    power.tegra.rc \
+    ueventd.tegra.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+    frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.camera.full.xml:system/etc/permissions/android.hardware.camera.full.xml \
+    frameworks/native/data/etc/android.hardware.camera.external.xml:system/etc/permissions/android.hardware.camera.external.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.camera.full.xml:system/etc/permissions/android.hardware.camera.full.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # NVIDIA
 PRODUCT_COPY_FILES += \
@@ -82,15 +74,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/nvaudio_conf.xml:system/etc/nvaudio_conf.xml \
     $(LOCAL_PATH)/audio/nvaudio_fx.xml:system/etc/nvaudio_fx.xml
-
-# GPS
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/comms/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-    $(LOCAL_PATH)/comms/gps.conf:system/etc/gps.conf
-
-# Bluetooth
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/comms/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # Camera
 PRODUCT_COPY_FILES += \
